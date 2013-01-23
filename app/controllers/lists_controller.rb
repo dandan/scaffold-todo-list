@@ -5,7 +5,7 @@ class ListsController < ApplicationController
   # GET /lists
   # GET /lists.json
   def index
-    @lists = List.all
+    @lists = @category.lists
 
     respond_to do |format|
       format.html # index.html.erb
@@ -43,7 +43,7 @@ class ListsController < ApplicationController
   # POST /lists
   # POST /lists.json
   def create
-    @list = List.new(params[:list])
+    @list = List.new(params[:list].merge({category_id: @category.id}))
 
     respond_to do |format|
       if @list.save

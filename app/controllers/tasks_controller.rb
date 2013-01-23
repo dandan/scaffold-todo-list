@@ -5,7 +5,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.all
+    @tasks = @list.tasks
 
     respond_to do |format|
       format.html # index.html.erb
@@ -43,7 +43,7 @@ class TasksController < ApplicationController
   # POST /tasks
   # POST /tasks.json
   def create
-    @task = Task.new(params[:task])
+    @task = Task.new(params[:task].merge({list_id: @list.id}))
 
     respond_to do |format|
       if @task.save

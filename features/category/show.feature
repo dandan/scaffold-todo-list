@@ -25,3 +25,7 @@ Feature: Show Category
     And I click on the first "Back" link
     Then I should be at the path "/categories"
 
+  Scenario: New list link
+    When I visit "/categories/3"
+    And I click on the first "New List" link
+    Then I should be at the path "/categories/3/lists/new"

@@ -28,3 +28,7 @@ Feature: Show List
     And I click on the first "Back" link
     Then I should be at the path "/categories/1/lists"
 
+  Scenario: New task link
+    When I visit "/categories/1/lists/1"
+    And I click on the first "New Task" link
+    Then I should be at the path "/categories/1/lists/1/tasks/new"

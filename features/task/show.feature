@@ -1,7 +1,7 @@
 
-Feature: Show List
+Feature: Show Task
   As a user
-  I can see the show page for a list
+  I can see the show page for a task
 
   Background:
     Given the following "categories" exist:
@@ -10,21 +10,20 @@ Feature: Show List
     Given the following "lists" exist:
       | category_id | id | name            | description                 |
       | 1           | 1  | Shopping        | Food & beverages            |
-      | 1           | 2  | DIY             | Fix my house                |
-      | 1           | 5  | Family          | Duty calls                  |
+    Given the following "tasks" exist:
+      | list_id | id | name            | description                 |
+      | 1       | 1  | Eggs            | 12                          |
+    And I visit "/categories/1/lists/1/tasks/1"
 
-  Scenario: Show list name and description
-    When I visit "/categories/1/lists/1"
-    Then I should see the main heading is "List: Shopping"
-    And I should see the "description" field is: "Food & beverages"
+  Scenario: Show task name and description
+    Then I should see the main heading is "Task: Eggs"
+    And I should see the "description" field is: "12"
 
   Scenario: Edit link
-    When I visit "/categories/1/lists/1"
     And I click on the first "Edit" link
-    Then I should be at the path "/categories/1/lists/1/edit"
+    Then I should be at the path "/categories/1/lists/1/tasks/1/edit"
 
   Scenario: Back link
-    When I visit "/categories/1/lists/1"
     And I click on the first "Back" link
-    Then I should be at the path "/categories/1/lists"
+    Then I should be at the path "/categories/1/lists/1/tasks"
 

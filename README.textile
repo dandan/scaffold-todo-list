@@ -4,3 +4,4 @@ This is a simple todo list built with Ruby on Rails scaffold.  Most of the effor
 building a nice set of cucumber tests for the scaffold, which (with some more effort) could be
 generated along with the scaffold.
 
+The only interesting stuff in here is in the features directory.

@@ -1,0 +1,6 @@
+h1. Todo List - Scaffold Cucumber Exploration
+
+This is a simple todo list built with Ruby on Rails scaffold.  Most of the effort has gone into
+building a nice set of cucumber tests for the scaffold, which (with some more effort) could be
+generated along with the scaffold.
+

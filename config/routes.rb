@@ -1,10 +1,11 @@
 Todo::Application.routes.draw do
   resources :categories do
-    resources :tasks do
-      resources :lists
+    resources :lists do
+      resources :tasks
     end
 end
 
+root :to => 'categories#index'
 
 
 

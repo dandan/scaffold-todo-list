@@ -1,4 +1,7 @@
 class TasksController < ApplicationController
+
+  before_filter :load_category_and_list
+
   # GET /tasks
   # GET /tasks.json
   def index
@@ -44,7 +47,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        format.html { redirect_to [@category, @list, @task], notice: 'Task was successfully created.' }
         format.json { render json: @task, status: :created, location: @task }
       else
         format.html { render action: "new" }
@@ -60,7 +63,7 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.update_attributes(params[:task])
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        format.html { redirect_to [@category, @list, @task], notice: 'Task was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,8 +79,16 @@ class TasksController < ApplicationController
     @task.destroy
 
     respond_to do |format|
-      format.html { redirect_to tasks_url }
+      format.html { redirect_to category_list_tasks_url(@category, @list) }
       format.json { head :no_content }
     end
   end
+
+  private
+
+  def load_category_and_list
+    @category = Category.find(params['category_id'])
+    @list = List.find(params['list_id'])
+  end
+
 end

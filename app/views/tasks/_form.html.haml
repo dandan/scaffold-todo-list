@@ -1,0 +1,8 @@
+= simple_form_for([@category, @list, @task]) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.input :name
+    = f.input :description
+    = f.association :list
+  .form-actions
+    = f.button :submit

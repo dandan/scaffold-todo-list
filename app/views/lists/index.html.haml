@@ -1,0 +1,18 @@
+%h1 Lists
+
+%table.lists
+  %tr
+    %th Name
+    %th Description
+    %th
+    %th
+    %th
+  - @lists.each do |list|
+    %tr.list
+      %td.name_field= list.name
+      %td.description_field= list.description
+      %td= link_to 'Show', category_list_path(@category, list)
+      %td= link_to 'Edit', edit_category_list_path(@category, list)
+      %td= link_to 'Destroy', category_list_path(@category, list), method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New List', new_category_list_path(@category)

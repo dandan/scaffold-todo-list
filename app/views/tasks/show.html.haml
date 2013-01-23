@@ -1,0 +1,12 @@
+%h1= "Task: #{@task.name}"
+
+%p#notice= notice
+%p
+  %b Description:
+  = @task.description
+%p
+  %b List:
+  = @task.list
+= link_to 'Edit', edit_category_list_task_path(@category, @list, @task)
+|
+\#{link_to 'Back', category_list_tasks_path(@category, @list)}

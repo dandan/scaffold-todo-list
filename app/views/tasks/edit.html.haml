@@ -1,0 +1,5 @@
+%h1 Editing task
+= render 'form'
+= link_to 'Show', [@category, @list, @task]
+|
+\#{link_to 'Back', category_list_tasks_path(@category, @list)}

@@ -1,0 +1,17 @@
+%h1 Tasks
+%table.tasks
+  %tr
+    %th Name
+    %th Description
+    %th
+    %th
+    %th
+  - @tasks.each do |task|
+    %tr.task
+      %td.name_field= task.name
+      %td.description_field= task.description
+      %td= link_to 'Show', category_list_task_path(@category, @list, task)
+      %td= link_to 'Edit', edit_category_list_task_path(@category, @list, task)
+      %td= link_to 'Destroy', category_list_task_path(@category, @list, task), method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Task', new_category_list_task_path(@category, @list)
